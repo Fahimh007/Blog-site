@@ -20,6 +20,7 @@ from django.urls import path,include
 
 from django.conf import settings
 from . import views
+from blogs import views as BlogsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +31,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.logout_view, name='logout'),
     path('category/', include('blogs.urls')),
+    path('<slug:slug>/', BlogsView.blog_detail, name='blog_detail'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

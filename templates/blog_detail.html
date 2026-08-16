@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="background-image: url({{ blog.featured_image.url }}); background-blend-mode: overlay; background-size: cover;">
+        <div class="col-md-8 px-0">
+        <h1 class="display-4 font-italic">{{ blog.title }}</h1>
+        <p class="lead my-3">{{ blog.short_description }}</p>
+        </div>
+    </div>
+{% endblock %}
