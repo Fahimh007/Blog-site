@@ -20,6 +20,7 @@ def category_posts(request, category_id):
 def blog_detail(request, slug):
     blog = get_object_or_404(Blog, slug=slug, status='Published')
     context = {
-        'blog': blog,
+        'single_blog': blog,
     }
+    print(blog)
     return render(request, 'blog_detail.html', context)
