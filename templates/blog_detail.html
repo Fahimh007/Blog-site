@@ -81,13 +81,13 @@
                 </div>
             </div>
             <!-- Side widget-->
-            {% if social_links %}
-            <div class="card mb-4 p-3">
+            {%if social_links %}
+            <div class="p-3">
                 <h4 class="font-italic">Follow Us</h4>
                 <ol class="list-unstyled">
-                    {% for i in social_links %}
-                    <li><a href="{{ i.link }}" target="_blank">{{ i.platform }}</a></li>
-                    {% endfor %}
+                {% for i in social_links %}
+                <li><a href="{{ i.link }}" target="_blank">{{i.platfrom}}</a></li>
+                {% endfor %}
                 </ol>
             </div>
             {% endif %}
