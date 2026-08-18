@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from blogs.models import Category, Blog
 from aboutUs.models import About
+from .forms import RegistrationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth
 
 
 def home(request):
@@ -35,12 +38,43 @@ def search(request):
     return render(request, 'home.html', context)
 
 
-def login_view(request):
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return redirect('dashboard')
+    else:
+        form = AuthenticationForm()
+
+    context = {
+        'form': form,
+        'categories': Category.objects.all(),
+    }
+    return render(request, 'login.html', context)
+
+def logout(request):
+    auth.logout(request)
     return redirect('home')
 
-
-def register_view(request):
-    return redirect('home')
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = RegistrationForm()
+    context = {
+        'form': form,
+        'categories': Category.objects.all(),
+    }
+    return render(request, 'register.html', context)
 
 
 def dashboard(request):

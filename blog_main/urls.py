@@ -26,11 +26,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('blogs/search/', BlogsView.search, name='search'),
-    path('login/', views.login_view, name='login'),
-    path('register/', views.register_view, name='register'),
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('logout/', views.logout_view, name='logout'),
+    path('logout/', views.logout, name='logout'),
     path('category/', include('blogs.urls')),
-    path('<slug:slug>/', BlogsView.blog_detail, name='blog_detail'),
+    path('blogs/<slug:slug>/', BlogsView.blog_detail, name='blog_detail'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
