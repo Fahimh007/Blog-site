@@ -1,0 +1,5 @@
+asgiref>=3.11.0
+Django>=6.0.5
+pillow>=12.1.1
+crispy-bootstrap4>=2024.10
+django-crispy-forms>=2.4

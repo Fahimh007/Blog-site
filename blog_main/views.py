@@ -77,10 +77,6 @@ def register(request):
     return render(request, 'register.html', context)
 
 
-def dashboard(request):
-    return redirect('home')
-
-
 def logout_view(request):
     logout(request)
     return redirect('home')
