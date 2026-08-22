@@ -129,12 +129,11 @@ def add_user(request):
             return redirect('users')
         else:
             print(form.errors)
-    else:
-        form = AddUserForm()
-        context = {
-            'form': form,
-        }
-        return render(request, 'dashboard/add_user.html', context)
+    form = AddUserForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'dashboard/add_user.html', context)
 
 def edit_user(request, pk):
     user = get_object_or_404(User, pk=pk)
