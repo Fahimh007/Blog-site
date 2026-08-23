@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: blog-site
+    runtime: python
+    buildCommand: bash build.sh
+    startCommand: gunicorn blog_main.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: "3.11.9"
