@@ -2,8 +2,8 @@
 {% block content %}
 
 <!-- Category Posts -->
-<h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">Category - {{ category }}</h3>
-<div class="row mb-2">
+<h3 class=" text-uppercase text-warning" style="letter-spacing: 2px;">Category - {{ category }}</h3>
+    <div class="row mb-2">
     {% if posts.count == 0 %}
         <p>No post found</p>
     {% else %}
@@ -17,9 +17,12 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <img class="img-fluid rounded " src="{{ post.featured_image.url }}" alt="{{ post.title }}"/>
+            </div>
         {% endfor %}
     {% endif %}
-  </div>
+    </div>
 </div>
 
 {% endblock %}
